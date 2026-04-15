@@ -1,6 +1,8 @@
+package myclass;
+
 public class Funcionarios{
 
-    private String NDF;
+    protected String NDF;
     private String cpf;
     private String nome;
     private String sobrenome;
@@ -10,7 +12,7 @@ public class Funcionarios{
     private boolean emAtividade;
     
 
-    public Funcionarios(
+    protected Funcionarios(
         String cpf,
         String nome,
         String sobrenome,
@@ -26,10 +28,7 @@ public class Funcionarios{
         this.idade = idade;
 
         this.setor = setor;
-        this.emAtividade = emAtividade;
-
-        this.NDF = montadorNDF();
-        
+        this.emAtividade = emAtividade;        
     }
 
     public String getNome (){return this.nome;}
@@ -45,7 +44,7 @@ public class Funcionarios{
     public void setter (String setor){this.setor = setor;}
 
     public String getNDF (){return this.NDF;}
-    private static String montadorNDF(){return "1";}
+    protected String montadorNDF(){return "1";}
 
     public String getCPF(){return this.cpf;}
 

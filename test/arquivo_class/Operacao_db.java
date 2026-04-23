@@ -167,7 +167,6 @@ public class Operacao_db {
                         linha = leitor.readLine();
                         if (linha.contains(chave)){
                             escritor.write(chave + ": " + valor);
-                            break;
                         }
                         else{escritor.write(linha);}
                         escritor.newLine();                            

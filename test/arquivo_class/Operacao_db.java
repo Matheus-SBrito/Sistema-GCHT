@@ -74,24 +74,15 @@ public class Operacao_db {
 
 
     public static void escritor_arquivos (
-        String path,
-
-        String chave,
-        String valor
-        ) throws IOException{
+        String path,String chave,String valor) throws IOException{
 
         File memoria_arquivo = new File(path);
-
         FileWriter arquivo_criado = null;
         BufferedWriter escritor_percorredor = null;
 
-
         // Verificando se o arquivo ñ existe ou se ñ há nenhum conteudo.
         boolean verificador_existencia = 
-            !memoria_arquivo.exists() 
-            || 
-            memoria_arquivo.length() == 0;
-        
+            !memoria_arquivo.exists() || memoria_arquivo.length() == 0;
         
         try {
             
@@ -99,57 +90,36 @@ public class Operacao_db {
             escritor_percorredor = new BufferedWriter(arquivo_criado);
 
             if (verificador_existencia == true){
-                escritor_percorredor.write(
-                    "============ Dados ============"
-                );
+                escritor_percorredor.write("============ Dados ============");
                 escritor_percorredor.newLine();
             }
-
             if (!dado_in_db(path, chave)){
                 escritor_percorredor.write(chave + ": " + valor);
                 escritor_percorredor.newLine();
-            }
-            else{
+            }else{
                 System.out.println("Não é possivel adicionar um dado já existente.");
             }
 
-
-
-            
         } catch (IOException exception) {
             // TODO: handle exception
-
         } finally {
-
-            if (escritor_percorredor != null){
-                escritor_percorredor.close();
-            }
-
-            if (arquivo_criado != null){
-                arquivo_criado.close();
-            }
-
-            
-        }
-        
+            if (escritor_percorredor != null){escritor_percorredor.close();}
+            if (arquivo_criado != null){arquivo_criado.close();}}
     }
 
 
-    public static boolean dado_in_db (
-        String path,
-        String chave)
+    public static boolean dado_in_db (String path,String chave)
         throws IOException{
 
             boolean verificador_existencia =
                 (new File(path)).exists();
-            boolean dado_encontrado = false;
 
+            boolean dado_encontrado = false;
 
             if (verificador_existencia){
 
                 FileReader arquivo = null;
                 BufferedReader leitor = null;
-
                 try {
                     
                     arquivo = new FileReader(path);
@@ -157,31 +127,70 @@ public class Operacao_db {
                     String linha_lida = "";
 
                     do{
-                        
                         linha_lida = leitor.readLine();
-                        
-                        if (linha_lida.contains(chave)){
-                            dado_encontrado = true;
-                        }
+                        if (linha_lida.contains(chave)){dado_encontrado = true;}
 
                     }while (linha_lida != null);
 
-                    
                 } catch (Exception e) {
                     // TODO: handle exception
-
                 } finally{
                     if (leitor != null){leitor.close();} 
                     if (arquivo != null){arquivo.close();}
                 }
+            }else {throw new IOException ("Erro. O arquivo de procura não existe.");}
 
-            }else {
+            return dado_encontrado;}
 
-                throw new IOException ("Erro. O arquivo de procura não existe.");
+
+    public static void alterador_dado_arquivo(String path, String chave, String valor)
+        throws IOException{
+
+            File file = new File (path);
+            boolean verificador_existencia =
+                !file.exists() || file.length() == 0;
+
+            if (!verificador_existencia){
+                
+                if (!dado_in_db(path, chave)){throw new IOException("Dado não encontrado no arquivo.");}
+                FileReader arquivo_lido = null;
+                FileWriter arquivo_escrever = null;
+                BufferedWriter escritor = null;
+                BufferedReader leitor = null;
+                
+                try {
+                    arquivo_lido = new FileReader  (path); leitor = new BufferedReader(arquivo_lido);
+                    arquivo_escrever = new FileWriter(path + "_1", true); escritor = new BufferedWriter(arquivo_escrever);
+                    String linha;
+                    
+                    do{
+                        linha = leitor.readLine();
+                        if (linha.contains(chave)){
+                            escritor.write(chave + ": " + valor);
+                            break;
+                        }
+                        else{escritor.write(linha);}
+                        escritor.newLine();                            
+                    }while(linha != null);
+
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+                finally{
+                    if(escritor != null){escritor.close();}
+                    if(arquivo_escrever != null){arquivo_escrever.close();}
+                    if(leitor != null){leitor.close();}
+                    if (arquivo_lido != null){arquivo_lido.close();}
+                }
+            }
+            else{
+                throw new IOException ("Erro. Impossibilidade de encontrar o arquivo ou não nenhum dado no arquivo.");
             }
 
-            return dado_encontrado;
-
+            new File (path).delete();        
+            new File(path + "_1").renameTo(new File(path));
         }
+
+    
 
 }

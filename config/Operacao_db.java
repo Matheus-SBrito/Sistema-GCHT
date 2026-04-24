@@ -1,4 +1,4 @@
-package test.arquivo_class;
+package config;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

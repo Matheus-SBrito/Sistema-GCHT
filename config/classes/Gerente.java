@@ -1,5 +1,6 @@
-package myclass;
+package config.classes;
 import java.time.LocalDate;
+
 
 public class Gerente extends Funcionarios {
     

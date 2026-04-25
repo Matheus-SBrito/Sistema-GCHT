@@ -1,4 +1,4 @@
-package myclass;
+package config.classes;
 
 public class Funcionarios{
 
@@ -10,6 +10,7 @@ public class Funcionarios{
 
     private String setor;
     private boolean emAtividade;
+    private String senha;
     
 
     protected Funcionarios(
@@ -50,5 +51,8 @@ public class Funcionarios{
 
     public boolean getEmAtividade(){return this.emAtividade;}
     public void setterEmAtividade(boolean emAtividade){this.emAtividade = emAtividade;}
+
+    public String getSenha (){return this.senha;}
+    public void setterSenha (String senha){this.senha = senha;}
     
 }

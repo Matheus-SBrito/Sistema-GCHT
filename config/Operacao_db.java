@@ -50,23 +50,35 @@ public class Operacao_db {
     }
 
 
-    public static void criador_arquivos (String path) throws IOException{
+    public static void criador_arquivos (
+        String path,
+        String titulo,
+        String primeira_chave,
+        String valor_chave
+        
+    ) throws IOException{
 
         FileWriter arquivo = null;
+        BufferedWriter escritor = null;
 
         try {
-            
-            arquivo = new FileWriter(path, true);
+            arquivo = new FileWriter(path);
+            escritor = new BufferedWriter(arquivo);
+
+            escritor.write(
+                "============"+
+                " Dados - "+ titulo +
+                "============");
+            escritor.newLine();
+            escritor.write(primeira_chave + ": " + valor_chave);
+
 
         } catch (IOException exception) {
-
-            System.out.println("Falha na leitura.");
+            System.out.println("Falha na abertura do arquivo.");
 
         } finally {
-
-            if (arquivo != null){
-                arquivo.close();
-            }
+            if (escritor != null){escritor.close();}
+            if (arquivo != null){arquivo.close();}
         }
 
 

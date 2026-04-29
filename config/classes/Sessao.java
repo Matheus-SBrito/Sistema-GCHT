@@ -4,7 +4,7 @@ import config.classes.*;
 public class Sessao {
 
     private boolean estado_login;
-    private Funcionarios usuario;
+    private Funcionarios usuario = null;
 
     public Sessao (Funcionarios usuario) {
         this.estado_login = true;

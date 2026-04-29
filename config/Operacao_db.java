@@ -12,41 +12,29 @@ import java.io.BufferedWriter;
 public class Operacao_db {
     
 
-    public static void leitor_arquivo (String path) throws IOException{
-        
+    public static String leitor_arquivo (String path) throws IOException{
+        String todos_dados = "";
         FileReader arquivo_lido = null;
         BufferedReader acelerador_leitura = null;
 
         try{
-
             arquivo_lido = new FileReader(path);
             acelerador_leitura = new BufferedReader(arquivo_lido);
-
             String linha_lida = acelerador_leitura.readLine();
 
             while (linha_lida != null) {
-
-                System.out.println(linha_lida);
-                linha_lida = acelerador_leitura.readLine();
-                
-            }
+                todos_dados += linha_lida;
+                linha_lida = acelerador_leitura.readLine();}
 
         }catch (IOException exception){
-            
             System.out.println("Falha em leitura");
 
         }finally{
-
-            if (acelerador_leitura != null){
-                acelerador_leitura.close();
-            }
-
-            if (arquivo_lido != null){
-                arquivo_lido.close();
-            }
+            if (acelerador_leitura != null){acelerador_leitura.close();}
+            if (arquivo_lido != null){arquivo_lido.close();}
 
         }
-
+        return todos_dados;
     }
 
 
@@ -57,7 +45,6 @@ public class Operacao_db {
         String valor_chave
         
     ) throws IOException{
-
         FileWriter arquivo = null;
         BufferedWriter escritor = null;
 
@@ -72,7 +59,6 @@ public class Operacao_db {
             escritor.newLine();
             escritor.write(primeira_chave + ": " + valor_chave);
 
-
         } catch (IOException exception) {
             System.out.println("Falha na abertura do arquivo.");
 
@@ -80,7 +66,6 @@ public class Operacao_db {
             if (escritor != null){escritor.close();}
             if (arquivo != null){arquivo.close();}
         }
-
 
     }
 
@@ -97,7 +82,6 @@ public class Operacao_db {
             !memoria_arquivo.exists() || memoria_arquivo.length() == 0;
         
         try {
-            
             arquivo_criado = new FileWriter(path, true);
             escritor_percorredor = new BufferedWriter(arquivo_criado);
 
@@ -200,8 +184,40 @@ public class Operacao_db {
 
             new File (path).delete();        
             new File(path + "_1").renameTo(new File(path));
+    }
+
+    public static String pesquisar_dado (String path, String chave)
+    throws IOException{
+        File file = new File (path);
+
+        if (!file.exists() || file.length() == 0){
+            throw new IOException("O arquivo não existe ou não tem conteudo");}
+        if (!dado_in_db(path, chave)){
+            throw new IOException("O dado pesquisado não existe.");}
+        
+        FileReader arquivo = null;
+        BufferedReader leitor =null;
+        String linha_lida = "";
+        try {
+            arquivo = new FileReader (path);
+            leitor = new BufferedReader(arquivo);
+
+            do{
+                linha_lida = leitor.readLine();
+
+            }while (!linha_lida.contains(chave));
+            linha_lida = linha_lida.replace(chave + ":", "").trim();
+            // A partir deste ponto a linha lida é o dado que queriamos encontrar.
+
+        }catch(IOException exception){
+            throw new IOException("Falha na leitura do arquivo.");
+            
+        }finally{
+            if (leitor != null){leitor.close();}
+            if (arquivo != null){arquivo.close();}
         }
 
-    
+        return linha_lida;
+    }
 
 }

@@ -7,7 +7,11 @@ public class app{
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
-        Sessao us = login.innit(scanner);
+        Sessao session = login.innit(scanner);
+
+        if (session.getEstado_login()){
+            
+        }
 
     }
 }

@@ -30,15 +30,14 @@ public class login {
 
             System.out.println("----------------------------------------");
 
-            if (ndf.length() == 6){
-                session = new Sessao(Mediator.getDb_instancia_gerente(ndf));
-                session = (session.getUsuario() == null)?null:session;
-            } else if (ndf.length() == 7){
-                session = new Sessao(Mediator.getDb_instanciar_subalterno(ndf));
-                session = (session.getUsuario() == null)?null:session;
+            if (ndf.length() == 6 || ndf.length() == 7){
+                session = (ndf.length() == 6)? 
+                    new Sessao(Mediator.getDb_instancia_gerente(ndf)):
+                    (ndf.length() == 7)? new Sessao(Mediator.getDb_instanciar_subalterno(ndf)): null;
+                session = (session.getUsuario() == null)?null:
+                            (session.getUsuario().getSenha().equals(senha))? session:null;
+                if (session != null){loop_log = "n"; continue;}
             }
-            if (session != null){
-                if (session.getUsuario().getSenha().equals(senha)){loop_log = "n"; continue;}}
             
             System.out.print("\033[H\033[2J");
             System.out.flush();

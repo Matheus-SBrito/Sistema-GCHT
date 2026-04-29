@@ -1,6 +1,12 @@
-import func.login;
 import java.util.Scanner;
-import config.classes.*;
+
+import func.login;
+import func.menu_gerente;
+import func.menu_subalterno;
+
+import config.classes.Sessao;
+import config.classes.Gerente;
+import config.classes.SubAlterno;
 
 public class app{
 
@@ -10,6 +16,14 @@ public class app{
         Sessao session = login.innit(scanner);
 
         if (session != null){
+
+            if (session.getUsuario() instanceof Gerente){
+                menu_gerente.innit(scanner);
+
+            } else if (session.getUsuario() instanceof SubAlterno){
+                menu_subalterno.innit(scanner);
+
+            }
             
         }
 

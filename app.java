@@ -9,7 +9,7 @@ public class app{
         Scanner scanner = new Scanner(System.in);
         Sessao session = login.innit(scanner);
 
-        if (session.getEstado_login()){
+        if (session != null){
             
         }
 

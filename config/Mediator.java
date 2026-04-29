@@ -25,25 +25,25 @@ public class Mediator {
         try{
                 
                 String cpf = Operacao_db.pesquisar_dado(
-                "config/db/gerente/" + ndf + ".txt", "Cpf");
+                "config/db/gerentes/" + ndf + ".txt", "Cpf");
 
                 String nome = Operacao_db.pesquisar_dado(
-                "config/db/gerente/" + ndf + ".txt", "Nome");
+                "config/db/gerentes/" + ndf + ".txt", "Nome");
 
                 String sobrenome = Operacao_db.pesquisar_dado(
-                "config/db/gerente/" + ndf + ".txt", "Sobrenome");
+                "config/db/gerentes/" + ndf + ".txt", "Sobrenome");
 
                 int idade = Integer.parseInt(Operacao_db.pesquisar_dado(
-                "config/db/gerente/" + ndf + ".txt", "Idade"));
+                "config/db/gerentes/" + ndf + ".txt", "Idade"));
 
                 String setor = Operacao_db.pesquisar_dado(
-                "config/db/gerente/" + ndf + ".txt", "Setor");
+                "config/db/gerentes/" + ndf + ".txt", "Setor");
 
                 String senha = Operacao_db.pesquisar_dado(
-                "config/db/gerente/" + ndf + ".txt", "Senha");
+                "config/db/gerentes/" + ndf + ".txt", "Senha");
 
                 boolean emAtividade = Boolean.parseBoolean(Operacao_db.pesquisar_dado(
-                "config/db/gerente/" + ndf + ".txt", "Em_atividade"));
+                "config/db/gerentes/" + ndf + ".txt", "Em_atividade"));
 
             obj = new Gerente(ndf, cpf, nome, sobrenome, idade, senha, setor, emAtividade);
             

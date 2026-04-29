@@ -7,7 +7,7 @@ public class login {
 
     public static Sessao innit(Scanner scanner) {
         Sessao session = null;
-        String ndf; String senha;String loop_log = "s";
+        String ndf; String senha; String loop_log = "s";
 
         while (loop_log.equals("s")) {
             System.out.println(
@@ -38,13 +38,18 @@ public class login {
                 session = (session.getUsuario() == null)?null:session;
             }
             if (session != null){
-                if (session.getUsuario().getSenha().equals(senha)){loop_log = "n";}}
+                if (session.getUsuario().getSenha().equals(senha)){loop_log = "n"; continue;}}
             
             System.out.print("\033[H\033[2J");
             System.out.flush();
-            System.out.println("!!Senha Invalida, deseja efetuar o login novamente (s/n)?");
-            do {loop_log = scanner.nextLine();} 
-            while (!loop_log.equals("s") || !loop_log.equals("n"));
+            System.out.println("!!Senha Invalida!!");
+            while (true) {
+                System.out.println("Deseja efetuar o login novamente (s/n)?");
+                loop_log = scanner.nextLine().trim();
+                if ((loop_log.equals("s"))
+                    || (loop_log.equals("n"))){break;}
+                
+            }
             
         }
         return session;

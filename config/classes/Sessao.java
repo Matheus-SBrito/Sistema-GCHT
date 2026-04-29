@@ -1,5 +1,4 @@
 package config.classes;
-import config.classes.*;
 
 public class Sessao {
 

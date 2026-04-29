@@ -1,0 +1,3 @@
+Ano_atual: 2026
+Quantidade_gerentes: 1
+Quantidade_subalternos: 1

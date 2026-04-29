@@ -1,0 +1,9 @@
+============ Dados - Subalterno ============
+Cpf: 000.000.000-00
+Ndf: 2026000
+Nome: José
+Sobrenome: Figueredo
+Idade: 40
+Senha: 1234567
+Setor: Informática
+Em_atividade: true

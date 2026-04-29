@@ -123,7 +123,7 @@ public class Funcionarios{
     throws IOException{
 
         String dados_gerais = "config/db/qtd_instancias.txt";
-        String[] chaves = {"Ano_atual", "Quantidade_gerentes","Quantidade_"};
+        String[] chaves = {"Ano_atual", "Quantidade_gerentes","Quantidade_subalternos"};
         
         int ano_registrado = Integer.parseInt(
             Operacao_db.pesquisar_dado(

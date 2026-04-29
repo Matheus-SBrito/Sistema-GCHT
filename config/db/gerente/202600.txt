@@ -1,0 +1,9 @@
+============ Dados - Gerente ============
+Cpf: 000.000.000-00
+Ndf: 202600
+Nome: Joâo
+Sobrenome: Nascimento
+Idade: 32
+Senha: 7654321
+Setor: Informática
+Em_atividade: true

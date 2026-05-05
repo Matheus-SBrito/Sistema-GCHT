@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class menu_gerente {
     
-    public static void innit (Scanner scanner){
+    public static String innit (Scanner scanner){
         
         String opc;
         do{
@@ -11,16 +11,17 @@ public class menu_gerente {
             System.out.flush();
             System.out.println(
                 "================ Menu - Gerente ================\n" +
-                "|"+ "1 - Marcar o Inicio do Trabalho +-------------|" +"\n"+
-                "|"+ "2 - Marcar Tempo de Intervalo do Trabalho +---|" +"\n"+
-                "|"+ "3 - Marcar Fim do Expediente +----------------|" +"\n"+
-                "|"+ "4 - Consultar Salário Vigente +---------------|" +"\n"+
+                "|"+ "1 - Vizualizar Informações Pessoais +---------|" +"\n"+
+                "|"+ "2 - Marcar o Inicio do Trabalho +-------------|" +"\n"+
+                "|"+ "3 - Marcar Tempo de Intervalo do Trabalho +---|" +"\n"+
+                "|"+ "4 - Marcar Fim do Expediente +----------------|" +"\n"+
+                "|"+ "5 - Consultar Salário Vigente +---------------|" +"\n"+
                 "|"+ "----------------------------------------------|" +"\n"+
-                "|"+ "5 - Vizualizar Usuarios Cadastrados +---------|" +"\n"+
-                "|"+ "6 - Tabela de Carga Horária Semanal +---------|" +"\n"+
-                "|"+ "7 - Tabela de Carga Horária Mensal +----------|" +"\n"+
-                "|"+ "8 - Tabela de Faltas +------------------------|" +"\n"+
-                "|"+ "9 - Tabela de Horas extras +------------------|" +"\n"+
+                "|"+ "6 - Vizualizar Usuarios Cadastrados +---------|" +"\n"+
+                "|"+ "7 - Tabela de Carga Horária Semanal +---------|" +"\n"+
+                "|"+ "8 - Tabela de Carga Horária Mensal +----------|" +"\n"+
+                "|"+ "9 - Tabela de Faltas +------------------------|" +"\n"+
+                "|"+ "10 - Tabela de Horas extras +------------------|" +"\n"+
                 "|"+ "0 - Deslogar do sistema +---------------------|" +"\n"+
                 "================================================"
             );
@@ -28,7 +29,9 @@ public class menu_gerente {
             System.out.println("Digite um dos números citador acima:");
             opc = scanner.nextLine();
         
-        }while (!opc.matches("[0-9]"));
+        }while (!opc.matches("^(10|[0-9]"));
+
+        return opc;
 
 
     }

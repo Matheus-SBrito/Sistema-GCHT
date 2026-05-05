@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class menu_subalterno {
     
-    public static String innit (Scanner scanner){
+    public static String init (Scanner scanner){
         
        String opc;
         do{

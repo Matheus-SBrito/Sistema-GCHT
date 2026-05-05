@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class menu_gerente {
     
-    public static String innit (Scanner scanner){
+    public static String init (Scanner scanner){
         
         String opc;
         do{
@@ -29,7 +29,7 @@ public class menu_gerente {
             System.out.println("Digite um dos números citador acima:");
             opc = scanner.nextLine();
         
-        }while (!opc.matches("^(10|[0-9]"));
+        }while (!opc.matches("^(10|[0-9]$"));
 
         return opc;
 

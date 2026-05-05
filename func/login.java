@@ -5,7 +5,7 @@ import config.Mediator;
 
 public class login {
 
-    public static Sessao innit(Scanner scanner) {
+    public static Sessao init(Scanner scanner) {
         Sessao session = null;
         String ndf; String senha; String loop_log = "s";
 

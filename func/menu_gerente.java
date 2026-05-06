@@ -29,7 +29,7 @@ public class menu_gerente {
             System.out.println("Digite um dos números citador acima:");
             opc = scanner.nextLine();
         
-        }while (!opc.matches("^(10|[0-9]$"));
+        }while (!opc.matches("^(10|[0-9]$)"));
 
         return opc;
 

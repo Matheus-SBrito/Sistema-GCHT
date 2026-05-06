@@ -15,23 +15,25 @@ public class app{
         
         Scanner scanner = new Scanner(System.in);
         Sessao session = login.init(scanner);
-        String opc = "-";
+        String opc = "<";
 
         if (session != null){
             
             do{
-                if (session.getUsuario() instanceof Gerente && opc.equals("-")){
+                if (session.getUsuario() instanceof Gerente && opc.equals("<")){
                     opc = menu_gerente.init(scanner);
 
-                } else if (session.getUsuario() instanceof SubAlterno && opc.equals("-")){
+                } else if (session.getUsuario() instanceof SubAlterno && opc.equals("<")){
                     opc = menu_subalterno.init(scanner);}
 
-                if (opc.equals("0")){
-                    session = null;
+                if (opc.equals("1")){
+                    opc = dados_pessoais.init(scanner, session);
                 }
 
 
-            }while (opc.equals("0"));
+            }while (!opc.equals("0"));
+
+            session = null;
 
 
             

@@ -20,14 +20,38 @@ public class app{
         if (session != null){
             
             do{
-                if (session.getUsuario() instanceof Gerente && opc.equals("<")){
-                    opc = menu_gerente.init(scanner);
+                if (session.getUsuario() instanceof Gerente){
+                    if (opc.equals("<")){
+                        opc = menu_gerente.init(scanner);
+                    } else if (opc.equals("6")){
+                        
+                    } else if (opc.equals("7")){
+                    
+                    } else if (opc.equals("8")){
+                    
+                    } else if (opc.equals("9")){
+                    
+                    } else if (opc.equals("10")){
+                    
+                    }
+                }
 
-                } else if (session.getUsuario() instanceof SubAlterno && opc.equals("<")){
-                    opc = menu_subalterno.init(scanner);}
-
-                if (opc.equals("1")){
+                if (session.getUsuario() instanceof SubAlterno && opc.equals("<")){
+                    opc = menu_subalterno.init(scanner);
+                } 
+                
+                if (opc.equals("1")) {
                     opc = dados_pessoais.init(scanner, session);
+                } else if (opc.equals("2")){
+
+                } else if (opc.equals("3")){
+                    
+                } else if (opc.equals("4")){
+                    
+                } else if (opc.equals("5")){
+                    
+                } else {
+                    opc = "<";
                 }
 
 

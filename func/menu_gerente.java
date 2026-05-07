@@ -21,7 +21,7 @@ public class menu_gerente {
                 "|"+ "7 - Tabela de Carga Horária Semanal +---------|" +"\n"+
                 "|"+ "8 - Tabela de Carga Horária Mensal +----------|" +"\n"+
                 "|"+ "9 - Tabela de Faltas +------------------------|" +"\n"+
-                "|"+ "10 - Tabela de Horas extras +------------------|" +"\n"+
+                "|"+ "10 - Tabela de Horas extras +-----------------|" +"\n"+
                 "|"+ "0 - Deslogar do sistema +---------------------|" +"\n"+
                 "================================================"
             );
